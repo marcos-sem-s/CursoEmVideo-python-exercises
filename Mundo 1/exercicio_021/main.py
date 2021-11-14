@@ -1,2 +1,6 @@
-import webbrowser
-webbrowser.open('c:/Users/Marco Neto/Desktop/Aulas/Python CursoEmVideo/McPoze.mp3')
+import pyglet
+
+music = pyglet.resource.media('McPoze.mp3')
+music.play()
+
+pyglet.app.run()
