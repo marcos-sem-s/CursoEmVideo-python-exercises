@@ -1,6 +1,6 @@
 print("Olá, Mundo!")
 
-# ou
+# ou 
 
 # msg = 'Olá, Mundo!'
 # print(msg)
