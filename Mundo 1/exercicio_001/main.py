@@ -1,6 +1,6 @@
-print('Olá, Mundo!')
+print("Olá, Mundo!")
 
 # ou
 
-msg = 'Olá, Mundo!'
-print(msg)
+# msg = 'Olá, Mundo!'
+# print(msg)
