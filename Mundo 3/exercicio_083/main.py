@@ -1,19 +1,24 @@
 operacao = str(input('Digite uma expressão matemática com parênteses: '))
 parentesesL = []
+contadorBarraEsquerda = 0
+contadorBarraDireta = 0
+isValid = False
 
-for elem in operacao:
-    if elem == '(' or elem == ')':
-        parentesesL.append(elem)
+for elemento in operacao:
+    if elemento == '(':
+        contadorBarraEsquerda += 1
+    elif elemento == ')':
+        contadorBarraDireta += 1
 
-parenteses = ''.join(parentesesL)
-parenteses.replace('()', '')
+    if contadorBarraDireta > contadorBarraEsquerda:
+        isValid = False
+        break
+    elif contadorBarraDireta == contadorBarraEsquerda:
+        isValid = True
+if contadorBarraDireta < contadorBarraEsquerda:
+    isValid = False
 
-print(parentesesL, parenteses)
-
-if len(parentesesL) > 0:
-    if len(parenteses) == 0:
-        print('A Expressão matemática pode ser efetuada')
-    else:
-        print('A Expressão matemática não pode ser efetuada')
+if isValid:
+    print('Sua operação matemática É válida')
 else:
-    print('A expressão matemática não teve nem um parênteses')
+    print('Sua operação matemática NÃO é válida')
