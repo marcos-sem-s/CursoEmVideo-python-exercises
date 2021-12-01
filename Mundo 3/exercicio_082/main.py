@@ -9,7 +9,7 @@ while cond != '0':
 
     cond = input('Digite 0 para sair do programa: ')
 
-# a pedido do guanabara:
+# A pedido do guanabara:
 for i in numeros:
     if i % 2 == 0:
         pares.append(i)
