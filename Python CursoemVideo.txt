@@ -1,0 +1,20 @@
+• lista1.append(lista2[:])
+==
+• lista1.append(lista2)
+O primeiro é usado para a cópia de dados, e não usar a lista real
+cópia != ligação
+toda a lista2 irá ser copiada para a posição 0 da lista 1
+
+É possível criar uma lista da seguinte forma:
+• lista3 = [['marco', 18], ['marina', 12]]
+e é desta forma que se acessa os seus dados:
+• print(lista3[1][0])
+
+Para limpar uma lista inteira, basta usar clear():
+• lista.clear()
+ou 
+• lista = []
+
+
+ps. analisar o exercicio 84
+
