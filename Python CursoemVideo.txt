@@ -1,5 +1,5 @@
 • lista1.append(lista2[:])
-==
+!=
 • lista1.append(lista2)
 O primeiro é usado para a cópia de dados, e não usar a lista real
 cópia != ligação
@@ -17,4 +17,168 @@ ou
 
 
 ps. analisar o exercicio 84
+
+É possível fazer mais de um append ao mesmo tempo e de uma lista dentro da outra desta forma:
+• lista.append([[nomes], [numeros], [fala, coe, [oi]]])
+ps. tudo deve ser dentro de uma lista pois o .append() aceita apenas um argumento
+
+• a = b = []
+Não é recomendável fazer o supracitado pois está relacionando o 'a' e o 'b' 
+
+
+Os dicionários são estruturas de dados semelhantes às tuplas e as listas, só que seus índices podem ser literais/personalizados
+são identificados por {}
+para declará-los basta:
+• dados = dict()
+ou 
+• dados = {}
+
+Na horade referenciar os elementos, usa-se colchetes, na hora de declarar, usa-se chaves
+Para colocar os dados dentro da estrutura e dizendo o índice, basta:
+• dados = {'Nome': 'Pedro', 'Idade': 25}
+'Pedro' é o valor e 'Nome', o identificador do elemento
+ou seja, ao invés de dar print(dados[0]), basta apenas print(dados['nome'])]
+
+O append() não funciona no dicionário, funcionando desta forma:
+• dados['sexo'] = 'M'
+criou-se o elemento 'sexo' e foi inserido 'M' dentro dele
+caso o elemento já exista, ele apenas é sobrescrito
+
+É possível usar o comando 'del' para deletar elementos do, e até do próprio dicionário
+• del dados['idade']
+perdeu-se o elemento e o seu valor
+
+É possível acessar a qualquer momento os itens, chaves ou simplesmente os valores de um dicionário
+• filme = {
+'título': 'Star Wars',
+'ano': 1977,
+'diretor': 'George Lucas'
+}
+
+• print(filme)
+>>> {'título': 'Star Wars', 'ano': 1977, 'diretor': 'George Lucas'}
+
+• print(filme.items()) # Uma composição de elementos
+>>> dict_items([('título', 'Star Wars'), ('ano', 1977), ('diretor', 'George Lucas')])
+
+• print(filme.values())
+>>> dict_values(['Star Wars', 1977, 'George Lucas'])
+
+• print(filme.keys())
+>>> dict_keys(['título', 'ano', 'diretor'])
+
+ps. print(filme[0]) daria erro
+
+
+caso o .items() seja utilizado em um laço, é similar ao 'enumerate'
+• for keys, values in filme.items():
+    print(f'O {keys} é {values}')
+>>> O título é Star Wars
+    O ano é 1977
+    O diretor é George Lucas
+
+caso não e em formatação, basta:
+• print(f'O {filme['título']} é de {filme['ano']}')
+
+
+É possível criar uma lista com um dicionário dentro por meio do .append()
+no entanto, não é possível fazer fatiamento em um dicionário
+Usa-se portanto o .copy()
+• locadora.append(filme.copy())
+
+e igualmente, utilizar um print com ambas peculiaridades:
+• locadora = [{
+   'título': 'Star Wars',
+   'ano': 1977,
+   'diretor': 'George Lucas'
+}, {
+   'título': 'Avengers',
+   'ano': 2012,
+   'diretor': 'Joss Whedon'
+}]
+
+• print(locadora[0]['ano'])
+>>> 1977
+
+• for filmes in locadora:
+   for keys, values in filmes.items():
+       print(keys, values)
+criando um loop para a lista e para o dicionário, que está dentro da lista
+
+
+
+ps. Another difference is that the list.sort() method is only defined for lists. In contrast, the sorted() function accepts any iterable.
+
+
+
+ps. revisar exercicio 91
+
+A função sorted() pode levar como parâmetro o 'key=', o qual escolhe qual posição do objeto será levada em conta no processo de sort
+Há também o parâmetro 'reverse=' que recebe valores booleanos e sorteia a lista de trás pra frente
+
+Para que o parâmtro 'key=' seja usado com mais eficiência, é preferível utilizar o 'itemgetter', provido pela biblioteca 'operator'
+tal método pode escolher em qual posição da tupla, lista e até dicionário será levaada em conta
+• from operator import itemgetter
+lista = [(2, 1), (1, 2)]
+sorted_lista = sorted(lista, key=itemgetter(1), reverse=True)
+print(sorted_lista)
+>>> [(1, 2), (2, 1)]
+
+
+É importante colocar aspas duplas quando for referir-se a um dicionário para não dar erro com as aspas simples 
+• print(f'Foi um total de {jogador["nome"]} gols')
+ps. as asplas simples triplas não dão erros juntos com as aspas simples de um dicionário
+
+Não é possível usar o f'' para formatar listas
+NO ENTANTO, é possível transformar as listas em strings por meio do comando str() E ENTÃO, usá-los com eficiência
+
+
+
+
+É possível otimizar suas rotinas no python por meio de funções, sendo elas comandos personalizados
+Todas as funções em Python são identificadas por parênteses no final do nome
+POR CONVENÇÃO, ORGANIZAÇÃO E ESTÉTICA, entre as funções definidas pelo programador (def) e o programa principal, deve-se ter uma diferença de 2 linhas vazias
+É possível passar parâmetros nessas funções, personalizando ainda mais a seu gosto
+• def menos(x, y):
+   s = x - y
+   print(s)
+
+
+   menos(3, 2)
+>>> 1
+o x da função irá receber o valor de 3 e o y, o 2
+
+É possível explicitar ainda mais os parâmetros da alocando-os às variáveis preferíveis:
+• menos(y=3, x=2)
+>>> -1
+
+No Python, é possível o EMPACOTAMENTO DE FUNÇÕES por meio de um asterisco que anteceda a variável:
+"Vou receber parâmetros, quantos? Não sei se vira aí"
+• def contador(*num):
+   print(num)
+   print(len(num))
+
+
+   contador(1, 2, 3)
+>>> (1, 2, 3)
+    3
+Tais números da função são automaticamento convertidos em uma tupla
+No Python, toda passagem de valores é por referência
+
+• def soma(*num):
+   s = 0
+   for n in num:
+      s += n
+   print(s)
+este programa recebe vários valores e os soma, alocando-os em uma variável e a pritnando depois
+
+Algumas situações é melhor usar o empacotamento, em outras é melhor a lista
+
+
+Devido a alguns problemas no print utilizando a biblioteca sleep(), torna-se necessário o seguinte uso:
+Usar o flush pra forçar que o resultado apareça imediatamente, mesmo sem linha nova
+• print('oi', end=' ' flush=True)
+melhor explicado: https://pt.stackoverflow.com/questions/291779/o-que-%C3%A9-o-par%C3%A2metro-flush-da-fun%C3%A7%C3%A3o-print
+
+
 
