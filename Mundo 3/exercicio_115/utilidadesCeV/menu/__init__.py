@@ -1,6 +1,6 @@
 def escreva(mensagem):
     print(f'{"-" * 40}')
-    print(f'{mensagem:^{40}}')
+    print(f'{mensagem:^40}')
     print(f'{"-" * 40}')
 
 
